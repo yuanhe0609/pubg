@@ -1,11 +1,11 @@
 server:
-  port: 8082
+  port: 8083
   encoding:
     charset: UTF-8
     force: true
 spring:
   application:
-    name: pubg-weapon-data
+    name: pubg-user-data
   messages:
     encoding: UTF-8
   datasource:

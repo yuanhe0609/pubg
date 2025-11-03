@@ -5,7 +5,7 @@ server:
     force: true
 spring:
   application:
-    name: season-data
+    name: pubb-season-data
   messages:
     encoding: UTF-8
   datasource:

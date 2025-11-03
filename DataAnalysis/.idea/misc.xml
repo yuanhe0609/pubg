@@ -10,11 +10,13 @@
         <option value="$PROJECT_DIR$/pubg-season-service/pom.xml" />
         <option value="$PROJECT_DIR$/demo/pom.xml" />
         <option value="$PROJECT_DIR$/pubg-weapon-service/pom.xml" />
+        <option value="$PROJECT_DIR$/pubg-user-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/pubg-user-service/pom.xml" />
       </set>
     </option>
   </component>

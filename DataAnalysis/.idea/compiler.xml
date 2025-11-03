@@ -39,6 +39,7 @@
       <module name="demo" options="-parameters" />
       <module name="pubg-cloud-register" options="-parameters" />
       <module name="pubg-season-service" options="-parameters" />
+      <module name="pubg-user-service" options="-parameters" />
       <module name="pubg-weapon-service" options="-parameters" />
     </option>
   </component>
