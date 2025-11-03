@@ -17,6 +17,8 @@
     <modules>
         <module>pubg-cloud-register</module>
         <module>pubg-season-service</module>
+        <module>pubg-weapon-service</module>
+        <module>pubg-user-service</module>
     </modules>
 
     <properties>
