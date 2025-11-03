@@ -122,4 +122,9 @@ public class PubgMatchDataServiceImpl implements PubgMatchDataService {
         }
         return null;
     }
+
+    @Override
+    public void calculateMatchRating(PubgMatchDataEntity pubgMatchDataEntity) {
+
+    }
 }

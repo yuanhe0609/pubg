@@ -81,4 +81,9 @@ public class PubgSeasonDataServiceImpl implements PubgSeasonDataService {
         }
         return pubgSeasonDataEntity;
     }
+
+    @Override
+    public void calculateSeasonRating(PubgSeasonDataEntity pubgSeasonDataEntity) {
+
+    }
 }

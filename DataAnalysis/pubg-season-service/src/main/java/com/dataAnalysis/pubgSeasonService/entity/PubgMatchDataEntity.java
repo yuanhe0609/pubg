@@ -54,4 +54,10 @@ public class PubgMatchDataEntity {
     private String matchType;
     @TableField(value = "game_mode")
     private String gameMode;
+    @TableField(value = "battle_score")
+    private BigDecimal battleScore;
+    @TableField(value = "collaboration_score")
+    private BigDecimal collaborationScore;
+    @TableField(value = "survival_score")
+    private BigDecimal survivalScore;
 }

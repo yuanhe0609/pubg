@@ -36,4 +36,6 @@ public class PubgSeasonDataEntity {
     private Integer duoRoundsPlayed;      // 双排场数
     @TableField(value = "duo_team_kills")
     private Integer duoTeamKills;         // 双排击杀队友数
+    @TableField(value = "duo_kd")
+    private BigDecimal duoKd;               // 双排kd
 }

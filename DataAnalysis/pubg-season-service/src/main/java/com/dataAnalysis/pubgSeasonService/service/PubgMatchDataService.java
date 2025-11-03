@@ -10,4 +10,5 @@ public interface PubgMatchDataService {
 
     PubgMatchDataEntity getPubgMatchData(String playerName,String matchId);
 
+    void calculateMatchRating(PubgMatchDataEntity pubgMatchDataEntity);
 }
