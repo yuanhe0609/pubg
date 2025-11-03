@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dataAnalysis.pubgSeasonService.mapper.PubgMatchDataMapper">
+    <update id="updateBatch">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE pubg_match_data
+            <set>
+                match_id = #{item.matchId}
+            </set>
+            WHERE match_id = #{item.matchId}
+        </foreach>
+    </update>
+
+    <insert id="insertBatch">
+        INSERT INTO pubg_match_data (
+        match_id
+        ) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.matchId}
+            )
+        </foreach>
+    </insert>
+</mapper>
