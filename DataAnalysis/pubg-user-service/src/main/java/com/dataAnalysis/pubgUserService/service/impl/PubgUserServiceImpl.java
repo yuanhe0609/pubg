@@ -14,6 +14,8 @@ public class PubgUserServiceImpl implements  PubgUserService {
 
     @Resource
     private PubgUserMapper userMapper;
+    @Resource
+    private GenerateTokenUtil generateTokenUtil;
 
     @Override
     public JSONObject register(PubgUserEntity pubgUserEntity) {
@@ -62,7 +64,6 @@ public class PubgUserServiceImpl implements  PubgUserService {
                         result.put("message", "登录成功");
 
                         // 生成Token
-                        GenerateTokenUtil generateTokenUtil = new GenerateTokenUtil();
                         String token = generateTokenUtil.generateToken(dbUser);
                         result.put("token", token);
                         result.put("user", dbUser);
@@ -80,6 +81,11 @@ public class PubgUserServiceImpl implements  PubgUserService {
         }
 
         return result;
+    }
+
+    @Override
+    public PubgUserEntity findByUserName(String userName) {
+        return userMapper.selectOne(new QueryWrapper<PubgUserEntity>().eq("user_name", userName));
     }
 
     private String encryptPassword(String password) {

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.DataAnalysis</groupId>
     <artifactId>DataAnalysis</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <name>DataAnalysis</name>
     <description>DataAnalysis</description>
     <packaging>pom</packaging>
@@ -19,9 +19,11 @@
         <module>pubg-season-service</module>
         <module>pubg-weapon-service</module>
         <module>pubg-user-service</module>
+        <module>pubg-common-service</module>
     </modules>
 
     <properties>
+        <revision>1.0.0-SNAPSHOT</revision>
         <java.version>17</java.version>
         <spring-cloud.version>2025.0.0</spring-cloud.version>
         <spring-boot.version>3.5.6</spring-boot.version>
@@ -32,6 +34,7 @@
         <lang3.version>3.12.0</lang3.version>
         <javax.validation.version>3.0.2</javax.validation.version>
         <jwt.version>0.11.5</jwt.version>
+        <flatten-maven-plugin.version>1.3.0</flatten-maven-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -116,10 +119,41 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${flatten-maven-plugin.version}</version>
+                <inherited>true</inherited>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 避免IDE将 .flattened-pom.xml 自动识别为功能模块 -->
+                            <updatePomFile>true</updatePomFile>
+                            <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                            <pomElements>
+                                <parent>expand</parent>
+                                <distributionManagement>remove</distributionManagement>
+                                <repositories>remove</repositories>
+                            </pomElements>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>

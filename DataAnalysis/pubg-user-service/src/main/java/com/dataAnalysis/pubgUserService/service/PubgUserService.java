@@ -7,4 +7,5 @@ public interface PubgUserService {
     JSONObject register(PubgUserEntity pubgUserEntity);
 
     JSONObject login(PubgUserEntity pubgUserEntity);
+    PubgUserEntity findByUserName(String userName);
 }
