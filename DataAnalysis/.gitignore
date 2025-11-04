@@ -10,7 +10,7 @@ logs/
 log/
 # IDE配置
 .vscode/
-.idea/
+/.idea/
 *.swp
 *.swo
 # 系统文件
