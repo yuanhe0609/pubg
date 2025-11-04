@@ -1,5 +1,9 @@
+pubg-cloud-register/target/
+pubg-common-service/target/
+pubg-season-service/target/
+pubg-user-service/target/
+pubg-weapon-service/target/
 .idea/
-target/
 .flattened-pom.xml
 # 编译文件
 *.class
