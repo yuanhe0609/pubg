@@ -1,32 +1,5 @@
-# 编译文件
-*.class
-*.jar
-*.war
-*.ear
-.flattened-pom.xml
-# 日志文件
-*.log
-logs/
-log/
-# IDE配置
-.vscode/
-.idea/*.xml
-*.swp
-*.swo
-# 系统文件
-.DS_Store
-Thumbs.db
-# 环境配置
-.env
-*.env.*
-# 数据库相关
-*.sql
-dump.rdb
-# Redis相关
-*.aof
-*.rdb
-appendonly.aof
-# 临时文件
-tmp/
-temp/
 target/
+pubg-weapon-service/target/
+pubg-season-service/target/
+pubg-user-service/target/
+pubg-common-service/target/
