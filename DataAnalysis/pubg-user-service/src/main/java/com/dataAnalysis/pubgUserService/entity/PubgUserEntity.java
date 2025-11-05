@@ -2,9 +2,11 @@ package com.dataAnalysis.pubgUserService.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
+@TableName("pubg_user_data")
 public class PubgUserEntity {
     @TableField(value = "user_id")
     @TableId

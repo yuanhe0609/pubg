@@ -13,11 +13,13 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
 import java.util.UUID;
 
+@Component
 public class GenerateTokenUtil {
     private Key jwtKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private long tokenExpiration = 86400000; // 24小时

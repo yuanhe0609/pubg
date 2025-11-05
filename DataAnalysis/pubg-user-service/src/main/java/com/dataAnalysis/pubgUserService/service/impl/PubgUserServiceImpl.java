@@ -9,7 +9,9 @@ import com.dataAnalysis.pubgUserService.utils.GenerateTokenUtil;
 import jakarta.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PubgUserServiceImpl implements  PubgUserService {
 
     @Resource
