@@ -28,4 +28,6 @@ mybatis-plus:
       id-type: auto
       field-strategy: not_empty
       db-type: mysql
-
+jwt:
+  secret: rlFgiCr2rRMch/bTWYbz=p8IY/Rj8oQdcu2zpj1/SQzrE= # 密钥，一定要>=256bit，不是256长度，>=32位长度就行，不然报错
+  expiration: 259200000 # 3天过期时间
