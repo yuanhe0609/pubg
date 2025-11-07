@@ -2,11 +2,11 @@ package com.dataAnalysis.pubgUserService.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dataAnalysis.pubgCommonService.entity.Result;
+import com.dataAnalysis.pubgCommonService.utils.JwtUtil;
 import com.dataAnalysis.pubgCommonService.utils.RedisUtil;
 import com.dataAnalysis.pubgUserService.entity.PubgUserEntity;
 import com.dataAnalysis.pubgUserService.mapper.PubgUserMapper;
 import com.dataAnalysis.pubgUserService.service.PubgUserService;
-import com.dataAnalysis.pubgUserService.utils.JwtUtil;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +15,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

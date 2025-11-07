@@ -1,7 +1,7 @@
 package com.dataAnalysis.pubgUserService.interceptor;
 
 import com.dataAnalysis.pubgCommonService.entity.Result;
-import com.dataAnalysis.pubgUserService.utils.JwtUtil;
+import com.dataAnalysis.pubgCommonService.utils.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;

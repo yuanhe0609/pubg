@@ -1,7 +1,7 @@
 package com.dataAnalysis.pubgUserService.filter;
 
 
-import com.dataAnalysis.pubgUserService.utils.JwtUtil;
+import com.dataAnalysis.pubgCommonService.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import jakarta.servlet.FilterChain;

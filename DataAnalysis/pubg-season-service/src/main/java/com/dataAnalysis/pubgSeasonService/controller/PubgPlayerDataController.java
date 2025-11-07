@@ -1,7 +1,7 @@
 package com.dataAnalysis.pubgSeasonService.controller;
 
+import com.dataAnalysis.pubgCommonService.entity.Result;
 import com.dataAnalysis.pubgSeasonService.service.PubgPlayerDataService;
-import com.dataAnalysis.pubgSeasonService.vo.Result;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -14,12 +14,17 @@ import javax.crypto.SecretKey;
 import java.util.Date;
 
 @Component
-@Getter
 public class JwtUtil {
     private String secretKey;
 
     private int expirationTime; // 3 days
+    public int getExpirationTime() {
+        return this.expirationTime;
+    }
 
+    public String getSecretKey() {
+        return this.secretKey;
+    }
     @Value("${jwt.secret}")
     private void setSecretKey(String secretKey) {
         this.secretKey = secretKey;
