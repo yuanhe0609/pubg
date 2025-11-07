@@ -1,42 +1,61 @@
 package com.dataAnalysis.pubgUserService.config;
 
+import com.dataAnalysis.pubgUserService.filter.JWTAuthenticationFilter;
 import com.dataAnalysis.pubgUserService.service.impl.CustomUserDetailsServiceImpl;
+import com.dataAnalysis.pubgUserService.utils.JwtUtil;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SecurityConfig {
-
-    // 配置自定义的 UserDetailsService
+    @Resource
+    private JwtUtil jwtUtil;
     @Bean
-    public UserDetailsService userDetailsService() {
-        return new CustomUserDetailsServiceImpl();
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((authorize) -> authorize
+                        // 放行登录,注册页面
+                        .requestMatchers("/pubg/user/login", "/pubg/user/register").permitAll()
+                        // 拦截其他所有请求
+                        .anyRequest().authenticated()
+                )
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .addFilterBefore(new JWTAuthenticationFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class)
+                .httpBasic(AbstractHttpConfigurer::disable)
+                .formLogin(AbstractHttpConfigurer::disable)
+                .cors(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable);
+        return http.build();
     }
 
-    // 配置密码编码器
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
-                // formLogin() 用于配置表单登录功能
-                // AbstractAuthenticationFilterConfigurer::permitAll 表示允许所有用户访问表单登录页面
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
-                // httpBasic() 启用 HTTP 基本认证
-                // withDefaults() 表示使用默认的 HTTP 基本认证配置
-                .httpBasic(withDefaults());
-
-        return http.build();
+    public AuthenticationManager authenticationManager(CustomUserDetailsServiceImpl userService, PasswordEncoder passwordEncoder) throws Exception {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userService);
+        provider.setPasswordEncoder(passwordEncoder);
+        return new ProviderManager(provider);
     }
+
 }

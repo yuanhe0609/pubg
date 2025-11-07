@@ -1,4 +1,4 @@
-package com.dataAnalysis.pubgEntityRegister.entity;
+package com.dataAnalysis.pubgCommonService.entity;
 
 import java.io.Serializable;
 
