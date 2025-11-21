@@ -1,0 +1,46 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: pubg-cloud-gateway
+    messages:
+      encoding: UTF-8
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lowerCaseServiceId: true
+
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOriginPatterns: "*"
+                allowedHeaders: "*"
+                allowedMethods: "*"
+                allowCredentials: true
+          routes:
+            - id: PubgSeasonService
+              uri: lb://PUBG-SEASON-SERVICE
+              predicates:
+                - Path=/api/pubg/season/**,/api/pubg/player/**,/api/pubg/match/**
+              filters:
+                - StripPrefix=1
+            - id: PubgUserService
+              uri: lb://PUBG-USER-SERVICE
+              predicates:
+                - Path=/api/pubg/user/**
+              filters:
+                - StripPrefix=1
+            - id: PubgWeaponService
+              uri: lb://PUBG-WEAPON-SERVICE
+              predicates:
+                - Path=/api/pubg/weapon/**
+              filters:
+                - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/

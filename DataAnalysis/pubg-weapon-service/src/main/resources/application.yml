@@ -15,7 +15,7 @@ spring:
         min-idle: 0
         timeout: 30000
   application:
-    name: pubg-weapon-data
+    name: pubg-weapon-service
   messages:
     encoding: UTF-8
   datasource:

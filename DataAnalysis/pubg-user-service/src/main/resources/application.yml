@@ -15,7 +15,7 @@ spring:
         min-idle: 0
         timeout: 30000
   application:
-    name: pubg-user-data
+    name: pubg-user-service
   messages:
     encoding: UTF-8
   datasource:
