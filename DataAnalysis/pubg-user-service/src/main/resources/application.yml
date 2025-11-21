@@ -3,8 +3,6 @@ server:
   encoding:
     charset: UTF-8
     force: true
-  servlet:
-    context-path: ""
 spring:
   data:
     redis:
@@ -12,13 +10,9 @@ spring:
       port: 6379
       pool:
         max-active: 8
-        # 连接池最大阻塞等待时间（使用负值表示没有限制）
         max-wait: -1
-        # 连接池中的最大空闲连接
         max-idle: 8
-        # 连接池中的最小空闲连接
         min-idle: 0
-        # 连接超时时间（毫秒）
         timeout: 30000
   application:
     name: pubg-user-data
@@ -49,6 +43,3 @@ mybatis-plus:
       id-type: auto
       field-strategy: not_empty
       db-type: mysql
-jwt:
-  secret: rlFgiCr2rRMch/bTWYbz=p8IY/Rj8oQdcu2zpj1/SQzrE= # 密钥，一定要>=256bit，不是256长度，>=32位长度就行，不然报错
-  expiration: 259200000 # 3天过期时间

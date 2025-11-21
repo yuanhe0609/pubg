@@ -1,6 +1,6 @@
 package com.dataAnalysis.pubgSeasonService.utils;
 
-import com.dataAnalysis.pubgSeasonService.vo.Result;
+import com.dataAnalysis.pubgCommonService.entity.Result;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
